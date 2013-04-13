@@ -1,9 +1,14 @@
 package com.github.rytina.udigger;
 
+import org.eclipse.osgi.framework.console.CommandProvider;
+import org.eclipse.ui.IStartup;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-public class Activator implements BundleActivator {
+import com.github.rytina.udigger.cli.commands.HidePlacesCommand;
+import com.github.rytina.udigger.cli.commands.ShowPlacesCommand;
+
+public class Activator implements BundleActivator, IStartup {
 
 	private static BundleContext context;
 
@@ -11,20 +16,19 @@ public class Activator implements BundleActivator {
 		return context;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
-	 */
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
+		context.registerService(CommandProvider.class.getName(), new ShowPlacesCommand(), null);
+		context.registerService(CommandProvider.class.getName(), new HidePlacesCommand(), null);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
-	 */
 	public void stop(BundleContext bundleContext) throws Exception {
 		Activator.context = null;
+	}
+
+	@Override
+	public void earlyStartup() {
+		System.out.println("Activator.earlyStartup()");
 	}
 
 }
