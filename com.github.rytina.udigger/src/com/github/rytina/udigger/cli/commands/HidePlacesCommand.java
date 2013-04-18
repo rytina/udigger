@@ -65,7 +65,7 @@ public class HidePlacesCommand extends AbstractPlacesCommand implements
 	private List<FeatureId> getFeatureIDs(List<Vertex> verticies) {
 		List<FeatureId> ids = new ArrayList<FeatureId>();
 		for (Vertex v : verticies) {
-			String fid = (String) v.getProperty("vid");
+			Object fid =  v.getProperty("vid");
 			if(fid!=null){
 				FeatureIdImpl id = SimpleFeatureBuilder.createDefaultFeatureIdentifier(fid.toString());
 				Assert.isNotNull(id);

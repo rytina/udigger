@@ -17,6 +17,7 @@ import net.refractions.udig.project.command.AbstractCommand;
 import net.refractions.udig.project.command.UndoableMapCommand;
 import net.refractions.udig.project.command.factory.EditCommandFactory;
 import net.refractions.udig.tool.edit.internal.Messages;
+import net.sf.ehcache.store.Store;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -24,6 +25,8 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.osgi.framework.console.CommandInterpreter;
 import org.geotools.data.DefaultQuery;
 import org.geotools.data.FeatureStore;
+import org.geotools.feature.FeatureCollection;
+import org.geotools.feature.FeatureCollections;
 import org.geotools.feature.FeatureIterator;
 import org.geotools.feature.simple.SimpleFeatureBuilder;
 import org.opengis.feature.simple.SimpleFeature;
@@ -61,20 +64,15 @@ public class CreateNewFeaturesCommand extends AbstractCommand implements Undoabl
     	monitor.subTask("rendering features - area");
     	monitor.beginTask("rendering features - area", 100);
         Object[] attributeArray = new Object[layer.getSchema().getAttributeCount()];
-        int lastWorkedInPercent = -1;
+        FeatureStore store = layer.getResource(FeatureStore.class, new SubProgressMonitor(monitor, 2));
+        FeatureCollection<SimpleFeatureType, SimpleFeature> newCollection = FeatureCollections
+                .newCollection();
         for (int i=0; i< paraList.size();i++) {
         	SimpleFeature feature=SimpleFeatureBuilder.build(layer.getSchema(), attributeArray, paraList.get(i).getId()); 
             feature.setDefaultGeometry(paraList.get(i).getGeo());
-            UndoableMapCommand createCommand = EditCommandFactory.getInstance().createAddFeatureCommand(feature, layer);
-            createCommand.setMap(getMap());
-            createCommand.run(new NullProgressMonitor());
-            int workedInPercent = (int) ((i+1)/(float)paraList.size()*100);
-            monitor.worked(workedInPercent);
-            if(lastWorkedInPercent < workedInPercent){
-            	cmdInterpreter.println("rendering of places "+workedInPercent +"%");
-            }
-            lastWorkedInPercent = workedInPercent;
+            newCollection.add(feature);
 		}
+        store.addFeatures(newCollection);
         monitor.done();
     }
 
