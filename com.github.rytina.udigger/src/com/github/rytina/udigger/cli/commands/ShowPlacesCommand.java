@@ -8,6 +8,9 @@ import javax.script.ScriptException;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.osgi.framework.console.CommandInterpreter;
 import org.eclipse.osgi.framework.console.CommandProvider;
+
+import com.github.rytina.udigger.map.commands.CreateNewFeaturesCommand;
+import com.github.rytina.udigger.map.commands.parameter.CreateNewFeaturesParameter;
 import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.gremlin.groovy.jsr223.GremlinGroovyScriptEngine;
 import com.vividsolutions.jts.geom.Coordinate;
@@ -21,7 +24,7 @@ import net.refractions.udig.project.internal.ProjectPlugin;
 import net.refractions.udig.project.ui.ApplicationGIS;
 import net.refractions.udig.tools.edit.commands.CreateNewOrSelectExitingFeatureCommand;
 
-public class ShowPlacesCommand implements CommandProvider {
+public class ShowPlacesCommand extends AbstractPlacesCommand implements CommandProvider {
 
 	public void _showplaces(CommandInterpreter commandInterpreter) {
 		GremlinGroovyScriptEngine engine = new GremlinGroovyScriptEngine();
@@ -32,6 +35,7 @@ public class ShowPlacesCommand implements CommandProvider {
 			IMap map = ApplicationGIS.getActiveMap();
 			GeometryFactory fac = new GeometryFactory();
 			ILayer placesLayer = map.getMapLayers().get(1);
+			List<CreateNewFeaturesParameter> paraList = new ArrayList<CreateNewFeaturesParameter>();
 			for (Vertex vertex : verticies) {
 				Point geo = fac
 						.createPoint(new Coordinate(Double.parseDouble(vertex
@@ -40,11 +44,13 @@ public class ShowPlacesCommand implements CommandProvider {
 										.toString())));
 				String id = toIdString(vertex.getProperty("vid"));
 				if(id!=null){
-					CreateNewOrSelectExitingFeatureCommand command = new CreateNewOrSelectExitingFeatureCommand(
-							id, placesLayer, geo);
-					command.setMap(map);
-					project.sendASync(command);					
+					paraList.add(new CreateNewFeaturesParameter(id, geo));
 				}
+			}
+			if(paraList.size() > 0){
+				CreateNewFeaturesCommand command = new CreateNewFeaturesCommand(paraList, placesLayer, commandInterpreter);
+				command.setMap(map);
+				project.sendASync(command);
 			}
 		} catch (Throwable e) {
 			commandInterpreter.printStackTrace(e);
@@ -67,25 +73,7 @@ public class ShowPlacesCommand implements CommandProvider {
 		return id;
 	}
 
-	private List<Vertex> executeQuery(CommandInterpreter commandInterpreter,
-			GremlinGroovyScriptEngine engine) {
-		List<Vertex> vercities = new ArrayList<Vertex>();
-		try {
-			System.out
-					.println(engine
-							.eval("g = new OrientGraph(\"remote:localhost/osm_stuttgart_city\");"));
-			for (Object o : (Iterable) engine.eval(commandInterpreter
-					.nextArgument())) {
-				if (o instanceof Vertex) {
-					vercities.add((Vertex) o);
-				}
-			}
-			return vercities;
-		} catch (Throwable e) {
-			commandInterpreter.printStackTrace(e);
-		}
-		return vercities;
-	}
+
 
 	@Override
 	public String getHelp() {
