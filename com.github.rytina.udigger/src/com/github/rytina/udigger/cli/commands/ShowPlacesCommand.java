@@ -25,6 +25,7 @@ import net.refractions.udig.project.ui.ApplicationGIS;
 import net.refractions.udig.tools.edit.commands.CreateNewOrSelectExitingFeatureCommand;
 
 public class ShowPlacesCommand extends AbstractPlacesCommand implements CommandProvider {
+	
 
 	public void _showplaces(CommandInterpreter commandInterpreter) {
 		GremlinGroovyScriptEngine engine = new GremlinGroovyScriptEngine();

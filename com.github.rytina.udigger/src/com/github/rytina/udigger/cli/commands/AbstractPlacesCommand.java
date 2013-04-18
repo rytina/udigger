@@ -5,13 +5,20 @@ import java.util.List;
 
 import org.eclipse.osgi.framework.console.CommandInterpreter;
 
+import com.github.rytina.udigger.map.commands.CreateInitialFeaturesCommand;
 import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.gremlin.groovy.jsr223.GremlinGroovyScriptEngine;
 
 public abstract class AbstractPlacesCommand {
 
+	private static boolean initialized = false;
+	
 	protected List<Vertex> executeQuery(CommandInterpreter commandInterpreter,
 			GremlinGroovyScriptEngine engine) {
+		if(!initialized){
+			CreateInitialFeaturesCommand.initFeatures();
+		}
+		initialized = true;
 		List<Vertex> vercities = new ArrayList<Vertex>();
 		try {
 			System.out
