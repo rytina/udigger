@@ -1,3 +1,3 @@
 udigger
 =======
-test
+uDigger is a gremlin integration for uDig
