@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 
 import com.github.rytina.udigger.osm.OsmNode;
+import com.github.rytina.udigger.osm.OsmWay;
 import com.github.rytina.udigger.osm.util.OsmResourceFactoryImpl;
 
 public class OsmXmlReader {
@@ -29,15 +30,25 @@ public class OsmXmlReader {
 		Resource resource = rSet.getResource(uri, true);
 		EObject root = resource.getContents().get(0);
 		TreeIterator<EObject> iter = root.eAllContents();
-		List<OsmNode> nodes = new ArrayList<OsmNode>();
-		while(iter.hasNext()){
-			EObject next = iter.next();
-			if(next instanceof OsmNode){
-				nodes.add((OsmNode) next);
-			}
-		}
-		OSMimportToOrientDBTest.importNodes(nodes);
-		System.out.println("OsmXmlReader.main() - node count: " +nodes.size());
+//		List<OsmNode> nodes = new ArrayList<OsmNode>();
+//		while(iter.hasNext()){
+//			EObject next = iter.next();
+//			if(next instanceof OsmNode){
+//				nodes.add((OsmNode) next);
+//			}
+//		}
+//		OSMimportToOrientDBTest.importNodes(nodes);
+//		System.out.println("OsmXmlReader.main() - node count: " +nodes.size());
+		
+//		List<OsmWay> ways = new ArrayList<OsmWay>();
+//		while(iter.hasNext()){
+//			EObject next = iter.next();
+//			if(next instanceof OsmWay){
+//				ways.add((OsmWay) next);
+//			}
+//		}
+//		OSMimportToOrientDBTest.importWays(ways);
+//		System.out.println("OsmXmlReader.main() - way count: " +ways.size());
 	}
 
 }

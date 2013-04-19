@@ -42,7 +42,12 @@ Bundle-ClassPath: libs/aduna-commons-lang-2.9.0.jar,
  libs/sesame-query-2.6.4.jar,
  libs/sesame-rio-api-2.6.4.jar,
  libs/sesame-sail-api-2.6.4.jar,
- .
+ .,
+ libs/blueprints-graph-jung-2.2.0.jar,
+ libs/jung-algorithms-2.0.1.jar,
+ libs/jung-api-2.0.1.jar,
+ libs/jung-visualization-2.0.1.jar,
+ libs/collections-generic-4.01.jar
 Export-Package: com.orientechnologies.common.collection,
  com.orientechnologies.common.comparator,
  com.orientechnologies.common.concur,

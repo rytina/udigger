@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<net.refractions.udig.project.internal:Map xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:net.refractions.udig.project.internal="http:///net/refractions/udig/project/internal.ecore" name="Mapnik" colorPalette="Dark2" colourScheme="Dark2;2;0;wmt://localhost/wmt/net.refractions.udig.catalog.internal.wmt.wmtsource.OSMMapnikSource#blank,0">
+  <projectInternal href="file:/C:/Users/rytina/cityguide/Neues%20Projekt.udig\project.uprj#/"/>
+  <contextModel>
+    <layers name="Mapnik" catalogRef="%23Thu+Apr+18+23%3A05%3A58+CEST+2013%0D%0Afile_export_version%3D3.0%0D%0A%2Fnet.refractions.udig.project%2Fwmt%253A%252F%252Flocalhost%252Fwmt%252Fnet.refractions.udig.catalog.internal.wmt.wmtsource.OSMMapnikSource%2523blank%2Fwmt%253A%252F%252Flocalhost%252Fwmt%252Fnet.refractions.udig.catalog.internal.wmt.wmtsource.OSMMapnikSource%2Fnet.refractions.udig.catalog.internal.wmt.url%2Fvalue%3Dwmt%253A%252F%252Flocalhost%252Fwmt%252Fnet.refractions.udig.catalog.internal.wmt.wmtsource.OSMMapnikSource%0D%0A%5C%21%2Fnet.refractions.udig.project%2Fwmt%253A%252F%252Flocalhost%252Fwmt%252Fnet.refractions.udig.catalog.internal.wmt.wmtsource.OSMMapnikSource%2523blank%3D%0D%0A%2Fnet.refractions.udig.project%2Fwmt%253A%252F%252Flocalhost%252Fwmt%252Fnet.refractions.udig.catalog.internal.wmt.wmtsource.OSMMapnikSource%2523blank%2Fwmt%253A%252F%252Flocalhost%252Fwmt%252Fnet.refractions.udig.catalog.internal.wmt.wmtsource.OSMMapnikSource%2Fnet.refractions.udig.catalog.internal.wmt.url%2Ftype%3Djava.lang.String%0D%0A" iD="wmt://localhost/wmt/net.refractions.udig.catalog.internal.wmt.wmtsource.OSMMapnikSource#blank" defaultColor="#1B9E77" minScaleDenominator="4.9E-324" maxScaleDenominator="1.7976931348623157E308">
+      <styleBlackboard>
+        <content iD="net.refractions.udig.style.filter" memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;styleEntry type=&quot;FilterContent&quot; version=&quot;1.0&quot;/>"/>
+        <content iD="net.refractions.udig.mapgraphic.style.font" memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;styleEntry FONT_NAME=&quot;Dialog&quot; SIZE=&quot;8&quot; STYLE=&quot;0&quot;/>"/>
+      </styleBlackboard>
+    </layers>
+  </contextModel>
+  <layerFactory/>
+  <viewportModelInternal cRS="GEOGCS[&quot;WGS84(DD)&quot;, &#xD;   DATUM[&quot;WGS84&quot;, &#xD;     SPHEROID[&quot;WGS84&quot;, 6378137.0, 298.257223563]], &#xD;   PRIMEM[&quot;Greenwich&quot;, 0.0], &#xD;   UNIT[&quot;degree&quot;, 0.017453292519943295], &#xD;   AXIS[&quot;Geodetic longitude&quot;, EAST], &#xD;   AXIS[&quot;Geodetic latitude&quot;, NORTH]]" bounds="9.149678594508792,9.251293727408887,48.75261780653758,48.81428169060516@GEOGCS[&quot;WGS84(DD)&quot;, &#xD;   DATUM[&quot;WGS84&quot;, &#xD;     SPHEROID[&quot;WGS84&quot;, 6378137.0, 298.257223563]], &#xD;   PRIMEM[&quot;Greenwich&quot;, 0.0], &#xD;   UNIT[&quot;degree&quot;, 0.017453292519943295], &#xD;   AXIS[&quot;Geodetic longitude&quot;, EAST], &#xD;   AXIS[&quot;Geodetic latitude&quot;, NORTH]]"/>
+  <blackBoardInternal>
+    <entries key="mapBackgroundColor" memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;blackboardContent alpha=&quot;255&quot; blue=&quot;255&quot; green=&quot;255&quot; internalObjectClassStorage=&quot;java.awt.Color&quot; red=&quot;255&quot;/>"/>
+    <entries key="LABEL_PAINTER"/>
+  </blackBoardInternal>
+  <legend xsi:type="net.refractions.udig.project.internal:LayerLegendItem" layer="wmt://localhost/wmt/net.refractions.udig.catalog.internal.wmt.wmtsource.OSMMapnikSource#blank"/>
+  <legend xsi:type="net.refractions.udig.project.internal:LayerLegendItem">
+    <layer href="wmt://localhost/wmt/net.refractions.udig.catalog.internal.wmt.wmtsource.OSMMapnikSource#blank"/>
+  </legend>
+  <legend xsi:type="net.refractions.udig.project.internal:LayerLegendItem">
+    <layer href="wmt://localhost/wmt/net.refractions.udig.catalog.internal.wmt.wmtsource.OSMMapnikSource#blank"/>
+  </legend>
+</net.refractions.udig.project.internal:Map>

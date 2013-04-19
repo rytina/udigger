@@ -29,9 +29,9 @@ public class GremlinConsoleTest {
 		GremlinGroovyScriptEngine engine = new GremlinGroovyScriptEngine();
 		try {
 			System.out.println(engine.eval("g = new OrientGraph(\"remote:localhost/osm_stuttgart_city\");"));
-			for ( Object o: (Iterable)engine.eval("g.V[0..20000].lon")) {
-				System.out.println(o);
-			}
+			System.out.println(engine.eval("jung = new GraphJung(g);"));
+			System.out.println(engine.eval("spAlgo = new edu.uci.ics.jung.algorithms.shortestpath.DijkstraShortestPath<Vertex,Edge>(jung);"));
+			System.out.println(engine.eval("spAlgo.getPath(g.v('#10:2'), g.v('#10:800'))"));
 			System.out.println(engine.eval("g.shutdown()"));
 			
 		} catch (ScriptException e) {

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="libs/collections-generic-4.01.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jung-algorithms-2.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jung-api-2.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jung-visualization-2.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/blueprints-graph-jung-2.2.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/aduna-commons-lang-2.9.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/antlr-2.7.7.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/asm-3.2.jar"/>
