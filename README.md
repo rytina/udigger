@@ -1,3 +1,3 @@
 udigger
 =======
-uDigger is a gremlin integration for uDig
+uDigger is a TinkerPop Gremlin & Pipes integration for uDig
